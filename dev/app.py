@@ -59,7 +59,8 @@ def main(
         '-v',
         '--verbose',
         count=True,
-        help='Increase logging verbosity.'
+        help='Increase logging verbosity.',
+        show_default=False
     )
 ):
     '''Creates and manages containerized development environments.'''
