@@ -43,7 +43,12 @@ def handle_error(type, error: BaseException, trace) -> NoReturn:
 sys.excepthook = handle_error
 
 # Configure Typer.
-app = typer.Typer(add_completion=False)
+app = typer.Typer(
+    context_settings={
+        'help_option_names': ['-h', '--help']
+    },
+    add_completion=False
+)
 
 # Run the requested command.
 @app.callback(invoke_without_command=True)
