@@ -12,6 +12,7 @@ license = "ISC"
 python = "^3.8"
 typer = "^0.3.2"
 docker = "^5.0.0"
+six = "^1.16.0"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"
