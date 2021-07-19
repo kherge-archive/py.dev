@@ -1,14 +1,36 @@
+from docker import DockerClient
 from docker.models.containers import Container
 from docker.models.images import Image
 from docker.models.networks import Network
 from docker.models.volumes import Volume
-from typing import Final, Union
+from typing import Final, Optional, Union
+
+import docker
+import logging
+
+logger = logging.getLogger(__name__)
 
 # The name of the managed label.
 LABEL_NAME: Final[str] = 'io.github.kherge.py-dev.managed'
 
 # The Docker object type.
 DockerObject = Union[Container, Image, Network, Volume]
+
+def get_docker(client: Optional[DockerClient]):
+    '''Returns the given client, or creates one.
+
+    If the given client is `None`, then `docker.from_env()` is used to create
+    a new client which is then returned. Otherwise, the given client is simply
+    returned.
+    '''
+    if client is None:
+        logger.debug('using client from docker.from_env()')
+
+        client = docker.from_env()
+    else:
+        logger.debug('using given client')
+
+    return client
 
 def is_managed(obj: DockerObject) -> bool:
     '''Checks if the given object is tagged for management.'''
