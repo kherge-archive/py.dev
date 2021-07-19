@@ -1,0 +1,6 @@
+# Exclude globally.
+**/__pycache__/
+
+# Exclude from root.
+/.pytest_cache/
+/.venv/
