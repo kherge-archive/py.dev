@@ -1,4 +1,4 @@
-from .command import volume
+from .command import network, volume
 from typing import NoReturn
 
 import logging
@@ -50,6 +50,7 @@ app = typer.Typer(
     },
     add_completion=False
 )
+app.add_typer(network.app)
 app.add_typer(volume.app)
 
 # Run the requested command.
