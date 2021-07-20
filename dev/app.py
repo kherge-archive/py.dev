@@ -1,3 +1,4 @@
+from .command import volume
 from typing import NoReturn
 
 import logging
@@ -49,6 +50,7 @@ app = typer.Typer(
     },
     add_completion=False
 )
+app.add_typer(volume.app)
 
 # Run the requested command.
 @app.callback(invoke_without_command=True)
