@@ -39,8 +39,10 @@ def test_remove():
     mock_volume = mock.MagicMock()
 
     mock_client.volumes.get.return_value = mock_volume
-    mock_volume.labels = {
-        LABEL_NAME: 'true'
+    mock_volume.attrs = {
+        'Labels': {
+            LABEL_NAME: 'true'
+        }
     }
 
     remove('test', mock_client)

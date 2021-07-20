@@ -19,14 +19,16 @@ def test_get_docker_without(mock_from_env: mock.Mock):
 
 def test_is_managed_false():
     obj = mock.MagicMock()
-    obj.labels = {}
+    obj.attrs = {}
 
     assert is_managed(obj) == False
 
 def test_is_managed_true():
     obj = mock.MagicMock()
-    obj.labels = {
-        LABEL_NAME: "true"
+    obj.attrs = {
+        'Labels': {
+            LABEL_NAME: "true"
+        }
     }
 
     assert is_managed(obj) == True

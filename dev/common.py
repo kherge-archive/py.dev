@@ -35,9 +35,9 @@ def get_docker(client: Optional[DockerClient]):
 def is_managed(obj: DockerObject) -> bool:
     '''Checks if the given object is tagged for management.'''
     return (
-        hasattr(obj, "labels")
-        and LABEL_NAME in obj.labels
-        and obj.labels[LABEL_NAME] == 'true'
+        'Labels' in obj.attrs
+        and LABEL_NAME in obj.attrs['Labels']
+        and obj.attrs['Labels'][LABEL_NAME] == 'true'
     )
 
 class NotManaged(Exception):
