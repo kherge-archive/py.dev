@@ -79,6 +79,8 @@ def _find(name: str, client: docker.DockerClient) -> Optional[Volume]:
         else:
             raise NotManaged('volume', name)
     except docker.errors.NotFound:
+        logger.debug('volume not found')
+
         return None
 
 ################################################################################
