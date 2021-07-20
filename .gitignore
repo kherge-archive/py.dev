@@ -4,4 +4,6 @@
 # Exclude from root.
 /.pytest_cache/
 /.venv/
+/coverage/
+
 /.python-version
